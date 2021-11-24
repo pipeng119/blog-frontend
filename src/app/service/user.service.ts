@@ -10,11 +10,13 @@ import { User } from '../model/user';
 })
 export class UserService {
 
+  public isLogin: boolean = true;
+
   constructor(
     @Inject('URL_CONFIG') private urlConfig: IUrlConfig,
     private http: HttpClient) { }
 
-  public login(): Observable<Res<User>> {
-    return this.http.get<Res<User>>(`${this.urlConfig.url}/user`);
+  public login(userInof: User): Observable<Res<User>> {
+    return this.http.post<Res<User>>(`${this.urlConfig.url}/login`, userInof);
   }
 }

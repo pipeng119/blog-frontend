@@ -1,7 +1,23 @@
+import { RegisterComponent } from './components/register/register.component';
+import { IndexModule } from './modules/index/index.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./modules/index/index.module').then(m => m.IndexModule)
+  },
+  {
+    path: 'sign_in',
+    component: LoginComponent
+  },
+  {
+    path: 'sign_up',
+    component: RegisterComponent
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
