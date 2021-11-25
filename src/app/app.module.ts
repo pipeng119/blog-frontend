@@ -17,6 +17,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { IUrlConfig } from './model/res';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 registerLocaleData(zh);
 
@@ -40,7 +41,8 @@ const UrlConfig: IUrlConfig = {
     NzFormModule,
     NzInputModule,
     NzButtonModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    NzMessageModule
   ],
   providers: [
     {

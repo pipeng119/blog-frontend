@@ -16,7 +16,11 @@ export class UserService {
     @Inject('URL_CONFIG') private urlConfig: IUrlConfig,
     private http: HttpClient) { }
 
-  public login(userInof: User): Observable<Res<User>> {
-    return this.http.post<Res<User>>(`${this.urlConfig.url}/login`, userInof);
+  public login(userInfo: User): Observable<Res<User>> {
+    return this.http.post<Res<User>>(`${this.urlConfig.url}/login`, userInfo);
+  }
+
+  public resigter(userInfo: User): Observable<Res<Pick<User, 'user_name' | 'password'>>> {
+    return this.http.post<Res<Pick<User, 'user_name' | 'password'>>>(`${this.urlConfig.url}/user`, userInfo);
   }
 }
