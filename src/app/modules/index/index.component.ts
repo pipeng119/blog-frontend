@@ -1,3 +1,5 @@
+import { ArticleService } from './../../service/article.service';
+import { Article } from './../../model/article';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
@@ -9,9 +11,20 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private router: Router, public userService: UserService) { }
+  public articleList!: Article[];
+
+  constructor(private router: Router, public userService: UserService, public articleService: ArticleService) { }
 
   ngOnInit(): void {
+    this.getArticleList();
+  }
+
+  public getArticleList() {
+    this.articleService.getAll().subscribe(res => {
+      if (res.code === 200) {
+        this.articleList = res.data;
+      }
+    })
   }
 
   public login(): void {

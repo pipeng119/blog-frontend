@@ -1,3 +1,4 @@
+import { ArticleListComponent } from './../../components/article-list/article-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +9,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
-    IndexComponent
+    IndexComponent,
+    ArticleListComponent
   ],
   imports: [
     CommonModule,

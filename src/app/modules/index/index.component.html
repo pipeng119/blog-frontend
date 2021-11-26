@@ -1,21 +1,27 @@
-  <ul nz-menu nzMode="horizontal">
-    <li nz-menu-item nzSelected>
-      <i nz-icon nzType="mail"></i>
-      首页
-    </li>
-    <li nz-menu-item>
-      <i nz-icon nzType="appstore"></i>
-      文章管理
-    </li>
-    <li nz-menu-item>
-      <i nz-icon nzType="appstore"></i>
-      用户管理
-    </li>
-  </ul>
-  <div class="funcion-area">
-    <ng-container *ngIf="userService.isNotLogin">
-      <button nz-button nzType="primary" (click)="login()">登录</button>
-      <button nz-button nzType="default" (click)="register()">注册</button>
-    </ng-container>
-    <button nz-button nzType="primary" nzShape="round" (click)="write()">写文章</button>
+<div class="ba-wrapper">
+  <div class="nav">
+    <ul nz-menu nzMode="horizontal">
+      <li nz-menu-item nzSelected>
+        <i nz-icon nzType="mail"></i>
+        首页
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="appstore"></i>
+        文章管理
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="appstore"></i>
+        用户管理
+      </li>
+    </ul>
+    <div class="funcion-area">
+      <ng-container *ngIf="userService.isNotLogin">
+        <button nz-button nzType="primary" (click)="login()">登录</button>
+        <button nz-button nzType="default" (click)="register()">注册</button>
+      </ng-container>
+      <button nz-button nzType="primary" nzShape="round" (click)="write()">写文章</button>
+    </div>
   </div>
+
+  <app-article-list [articleList]="articleList"></app-article-list>
+</div>

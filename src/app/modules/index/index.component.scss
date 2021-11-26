@@ -1,9 +1,13 @@
-:host {
+.ba-wrapper {
   max-width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin: 10px auto;
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
 }
 
 .funcion-area button {
