@@ -22,4 +22,8 @@ export class IndexComponent implements OnInit {
     this.router.navigateByUrl('sign_up');
   }
 
+  public write(): void {
+    this.router.navigate(['writer']);
+  }
+
 }

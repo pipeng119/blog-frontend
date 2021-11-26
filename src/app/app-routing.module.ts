@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'sign_up',
     component: RegisterComponent
   },
+  {
+    path: 'writer',
+    loadChildren: () => import('./modules/writer/writer.module').then(m => m.WriterModule)
+  }
 ];
 
 @NgModule({

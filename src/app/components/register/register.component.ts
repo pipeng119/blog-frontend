@@ -56,7 +56,6 @@ export class RegisterComponent implements OnInit {
       .subscribe(res => {
         if (res.code === 200) {
           this.router.navigate(['/sign_in']);
-          this.userService.isLogin = false;
         } else if (res.code === 400) {
           this.messageService.create('error', res.message)
         }

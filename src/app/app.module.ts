@@ -18,6 +18,7 @@ import { IUrlConfig } from './model/res';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { ArticleListComponent } from './components/article-list/article-list.component';
 
 registerLocaleData(zh);
 
@@ -30,6 +31,7 @@ const UrlConfig: IUrlConfig = {
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    ArticleListComponent,
   ],
   imports: [
     BrowserModule,

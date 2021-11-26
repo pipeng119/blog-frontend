@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         if (res.code === 200) {
           this.router.navigate(['']);
-          this.userService.isLogin = false;
         }
       })
   }

@@ -1,0 +1,17 @@
+<ul class="article-wrapper">
+  <li *ngFor="let item of articleList">
+    <a [routerLink]="[ '/path', item.id ]">{{item.title}}</a>
+    <p>{{item.summary}}</p>
+    <div class="meta">
+      <span class="nikename">{{item.nikename}}</span>
+      <span>
+        <i class=""></i>
+        {{item.comment}}
+      </span>
+      <span>
+        <i class=""></i>
+        {{item.like}}
+      </span>
+    </div>
+  </li>
+</ul>

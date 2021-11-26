@@ -10,7 +10,9 @@ import { User } from '../model/user';
 })
 export class UserService {
 
-  public isLogin: boolean = true;
+  public get isNotLogin(): boolean {
+    return !document.cookie;
+  }
 
   constructor(
     @Inject('URL_CONFIG') private urlConfig: IUrlConfig,
