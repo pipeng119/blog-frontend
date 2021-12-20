@@ -6,6 +6,7 @@ import { IndexRoutingModule } from './index-routing.module';
 import { IndexComponent } from './index.component';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +14,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     ArticleListComponent
   ],
   imports: [
-    CommonModule,
-    NzMenuModule,
     IndexRoutingModule,
-    NzButtonModule
+    SharedModule
   ]
 })
 export class IndexModule { }

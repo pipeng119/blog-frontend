@@ -18,6 +18,7 @@ import { IUrlConfig } from './model/res';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { SharedModule } from './modules/shared/shared.module';
 
 registerLocaleData(zh);
 
@@ -34,15 +35,10 @@ const UrlConfig: IUrlConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzFormModule,
-    NzInputModule,
-    NzButtonModule,
-    NzCheckboxModule,
-    NzMessageModule
+    SharedModule
   ],
   providers: [
     {

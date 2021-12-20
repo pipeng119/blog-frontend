@@ -22,6 +22,14 @@
       <button nz-button nzType="primary" nzShape="round" (click)="write()">写文章</button>
     </div>
   </div>
-
-  <app-article-list [articleList]="articleList"></app-article-list>
+  <!-- <nz-upload class="avatar-uploader" nzAction="/api/article/upload" nzName="avatar" nzListType="picture-card"
+    [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload" [nzCustomRequest]="customReq"
+    (nzChange)="handleChange($event)">
+    <ng-container *ngIf="!avatarUrl">
+      <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+      <div class="ant-upload-text">Upload</div>
+    </ng-container>
+    <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+  </nz-upload> -->
+  <!-- <app-article-list [articleList]="articleList"></app-article-list>-->
 </div>
