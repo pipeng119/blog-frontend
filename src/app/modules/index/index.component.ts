@@ -45,7 +45,7 @@ export class IndexComponent implements OnInit {
   public getArticleList() {
     this.articleService.getArticle().subscribe(res => {
       if (res.code === 200) {
-        // this.articleList = res.data;
+        this.articleList = res.data;
       }
     })
   }

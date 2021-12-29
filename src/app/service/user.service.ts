@@ -19,10 +19,10 @@ export class UserService {
     private http: HttpClient) { }
 
   public login(userInfo: User): Observable<Res<User>> {
-    return this.http.post<Res<User>>(`${this.urlConfig.url}/login`, userInfo);
+    return this.http.post<Res<User>>(`${this.urlConfig.url}/auth/login`, userInfo);
   }
 
-  public resigter(userInfo: User): Observable<Res<Pick<User, 'user_name' | 'password'>>> {
-    return this.http.post<Res<Pick<User, 'user_name' | 'password'>>>(`${this.urlConfig.url}/user`, userInfo);
+  public resigter(userInfo: User): Observable<Res<Pick<User, 'username' | 'password'>>> {
+    return this.http.post<Res<Pick<User, 'username' | 'password'>>>(`${this.urlConfig.url}/user`, userInfo);
   }
 }

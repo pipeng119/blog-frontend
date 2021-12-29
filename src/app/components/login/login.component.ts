@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   public ngOnInit(): void {
     this.loginForm = this.fb.group({
-      user_name: [null, [Validators.required]],
+      username: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [false]
     });
@@ -35,10 +35,11 @@ export class LoginComponent implements OnInit {
         control.updateValueAndValidity({ onlySelf: true });
       }
     });
-    let { user_name, password } = this.loginForm.value || {};
-    let req = { user_name, password };
+    let { username, password } = this.loginForm.value || {};
+    let req = { username, password };
     this.userService.login(req)
       .subscribe(res => {
+        console.log('res: ', res);
         if (res.code === 200) {
           this.router.navigate(['']);
         }
