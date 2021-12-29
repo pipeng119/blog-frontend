@@ -1,0 +1,57 @@
+// 批量生成样式
+
+// 引入sass的三个内置模块
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+
+@use "variables"as *;
+
+@use 'display';
+@use 'position';
+@use 'sizing';
+@use 'spacing';
+@use 'border';
+@use 'rounded';
+@use 'text';
+@use 'overflow';
+@use 'cursor';
+@use 'image';
+@use 'icon';
+
+
+// Generate Helpers
+@each $key,
+$utility in $utilities {
+  // 获取事先定义的map对象中的value——css的值
+  $values: map.get($utility, values);
+
+  @if meta.type-of($values)=="string"or meta.type-of(list.nth($values, 1)) !="list" {
+    $values: list.zip($values, $values);
+  }
+
+  // 获取map对象中的property——css的属性
+  $properties: map.get($utility, property);
+  // 获取类名前缀
+  $property-class-prefix: map.get($utility, class);
+
+  /**
+   * 如果map对象中的类名前缀为空，就返回空，否则拼接中划线
+   * class: '' -> 就直接用属性值作为class
+   * class: 'b' -> b-
+  */
+
+  $property-class-prefix-hyphen: if($property-class-prefix=="",
+    $property-class-prefix,
+    $property-class-prefix + "-"
+  );
+
+  @each $class-modifier,
+  $value in $values {
+    .#{$property-class-prefix-hyphen + $class-modifier} {
+      @each $property in $properties {
+        #{$property}: $value !important;
+      }
+    }
+  }
+}
