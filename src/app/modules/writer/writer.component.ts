@@ -2,6 +2,8 @@ import { Article } from './../../model/article';
 import { ArticleService } from './../../service/article.service';
 import { Component, OnInit } from '@angular/core';
 import tinymce from 'tinymce';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-writer',
@@ -10,7 +12,10 @@ import tinymce from 'tinymce';
 })
 export class WriterComponent implements OnInit {
 
-  public editorContent = '';
+  public article: Article = {
+    title: '',
+    content: ''
+  }
 
   public editorConfig = {
     // selector: '#article-editor',
@@ -43,19 +48,21 @@ export class WriterComponent implements OnInit {
     max_height: 650
   }
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService, private message: NzMessageService, private route: Router) { }
 
   ngOnInit(): void {
   }
 
 
-  contentInfo(): void {
-    if (this.editorContent) {
-      console.log('this.editorContent: ', this.editorContent);
-      // let req:Article = {
-      //   content: this.editorContent
-      // }
-      // this.articleService.createArticle()
+  publishArticle(): void {
+    if (this.article.title && this.article.content) {
+      console.log('this.editorContent: ', this.article);
+      this.articleService.createArticle(this.article).subscribe(res => {
+        if (res.data) {
+          this.message.success('创建文章成功');
+          this.route.navigateByUrl('/');
+        }
+      })
     }
   }
 
