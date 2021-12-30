@@ -1,0 +1,15 @@
+.writer-wrapper {
+  padding: 20px;
+
+  .title {
+    height: 40px;
+    &:focus-visible {
+      outline: 0px;
+    }
+  }
+
+  button {
+    float: right;
+    margin-top: 20px;
+  }
+}

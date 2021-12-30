@@ -1,0 +1,5 @@
+<div class="writer-wrapper">
+  <input class="d-block m-b-16 b-0 f-s-24 f-w-500 title" placeholder="请输入文章标题..." [(ngModel)]="article.title" />
+  <editor [init]="editorConfig" [(ngModel)]="article.content"></editor>
+  <button nz-button nzType="primary" (click)="publishArticle()">发布文章</button>
+</div>

@@ -1,0 +1,15 @@
+@use 'sass:map';
+
+// It makes the value negative. 批量将值处理成负的 eg: spacer
+@function negativify-map($map) {
+  $result: ();
+
+  @each $key,
+  $value in $map {
+    @if $key !=0 {
+      $result: map.merge($result, ('-'+ $key: (-$value)));
+    }
+  }
+
+  @return $result;
+}
