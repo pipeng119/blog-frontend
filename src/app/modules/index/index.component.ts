@@ -7,6 +7,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
 import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-index',
@@ -31,6 +32,7 @@ export class IndexComponent implements OnInit {
   };
 
   constructor(
+    public tokenService: TokenService,
     private router: Router,
     public userService: UserService,
     public articleService: ArticleService,
@@ -56,6 +58,11 @@ export class IndexComponent implements OnInit {
 
   public register(): void {
     this.router.navigateByUrl('sign_up');
+  }
+
+  public logout(): void {
+    this.tokenService.clear();
+    this.router.navigateByUrl('sign_in');
   }
 
   public write(): void {

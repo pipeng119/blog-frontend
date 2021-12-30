@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { TokenService } from 'src/app/service/token.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
   ) { }
 
   public ngOnInit(): void {
@@ -38,11 +40,9 @@ export class LoginComponent implements OnInit {
     let { username, password } = this.loginForm.value || {};
     let req = { username, password };
     this.userService.login(req)
+      .pipe(filter(authenticated => authenticated))
       .subscribe(res => {
-        console.log('res: ', res);
-        if (res.code === 200) {
-          this.router.navigate(['']);
-        }
+        this.router.navigate(['']);
       })
   }
 

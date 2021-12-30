@@ -9,7 +9,7 @@ import { zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -19,6 +19,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { SharedModule } from './modules/shared/shared.module';
+import { TokenInterceptorInterceptor } from './core/interceptors/token-interceptor.interceptor';
 
 registerLocaleData(zh);
 
@@ -48,7 +49,8 @@ const UrlConfig: IUrlConfig = {
     {
       provide: 'URL_CONFIG',
       useValue: UrlConfig
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

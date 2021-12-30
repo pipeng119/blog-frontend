@@ -9,6 +9,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 const modules = [
   CommonModule,
@@ -20,7 +21,8 @@ const modules = [
   NzCheckboxModule,
   NzMessageModule,
   NzUploadModule,
-  NzIconModule
+  NzIconModule,
+  NzAvatarModule
 ]
 
 

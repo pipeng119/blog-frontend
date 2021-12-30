@@ -56,7 +56,6 @@ export class WriterComponent implements OnInit {
 
   publishArticle(): void {
     if (this.article.title && this.article.content) {
-      console.log('this.editorContent: ', this.article);
       this.articleService.createArticle(this.article).subscribe(res => {
         if (res.data) {
           this.message.success('创建文章成功');

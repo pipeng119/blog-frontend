@@ -4,3 +4,7 @@ export interface User {
   remember?: boolean;
 }
 
+export type TLogin = {
+  username: string;
+  token: string;
+}
