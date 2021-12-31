@@ -26,7 +26,9 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
             headers: request.headers.append('token', this.tokenService.access_token),
             withCredentials: true,
           })
-        )
+        ).pipe(
+          catchError(this.errorHandler.bind(this))
+        );
     };
     return next.handle(request).pipe(
       catchError(this.errorHandler.bind(this))
