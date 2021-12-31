@@ -41,15 +41,6 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getArticleList();
-  }
-
-  public getArticleList() {
-    this.articleService.getArticle().subscribe(res => {
-      if (res.code === 200) {
-        this.articleList = res.data;
-      }
-    })
   }
 
   public login(): void {
