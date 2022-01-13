@@ -1,4 +1,4 @@
-<ul class="article-wrapper">
+<ul class="article-wrapper p-x-20">
     <li *ngFor="let item of articleList">
       <a class="title" [routerLink]="[ 'detail', item.article_id ]">{{item.title}}</a>
       <p class="e2e-inner-html-bound" [innerHTML]="item.content | htmlFilter"></p>

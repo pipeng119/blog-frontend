@@ -3,6 +3,10 @@
 @use 'styles/grid';
 @use 'styles/helpers';
 
-li{
+ul {
+  padding: 0;
+}
+
+li {
   list-style: none;
 }
