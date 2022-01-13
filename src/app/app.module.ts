@@ -30,7 +30,7 @@ const UrlConfig: IUrlConfig = {
     LoginComponent,
     RegisterComponent,
     IndexComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

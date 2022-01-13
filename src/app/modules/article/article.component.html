@@ -1,7 +1,7 @@
 <ul class="article-wrapper">
     <li *ngFor="let item of articleList">
       <a class="title" [routerLink]="[ 'detail', item.article_id ]">{{item.title}}</a>
-      <p class="abstract">{{item.summary}}</p>
+      <p class="e2e-inner-html-bound" [innerHTML]="item.content | htmlFilter"></p>
       <div class="meta">
         <a class="nikename">{{item.nikename}}</a>
         <a>
