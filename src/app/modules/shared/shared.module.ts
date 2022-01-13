@@ -10,6 +10,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { HtmlFilterPipe } from 'src/app/core/pipe/html-filter.pipe';
 
 const modules = [
   CommonModule,
@@ -27,12 +28,13 @@ const modules = [
 
 
 @NgModule({
-  declarations: [],
+  declarations: [HtmlFilterPipe],
   imports: [
     modules
   ],
   exports: [
-    modules
+    modules,
+    HtmlFilterPipe
   ]
 })
 export class SharedModule { }
