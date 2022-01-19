@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Article } from '../model/article';
 import { IUrlConfig, Res } from '../model/res';
 
@@ -13,8 +13,9 @@ export class ArticleService {
     @Inject('URL_CONFIG') private urlConfig: IUrlConfig,
     private http: HttpClient) { }
 
-  public getArticleList(): Observable<Res<Article[]>> {
-    return this.http.get<Res<Article[]>>(`${this.urlConfig.url}/article`);
+  public getArticleList(param?: string): Observable<Res<Article[]>> {
+    let url = param === 'admin' ? `${this.urlConfig.url}/article/all?key=${param}` : `${this.urlConfig.url}/article/all`;
+    return this.http.get<Res<Article[]>>(url);
   }
 
   public createArticle(req: Article): Observable<Res<boolean>> {

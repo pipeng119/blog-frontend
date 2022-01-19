@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { iif, of } from 'rxjs';
 import { Article } from 'src/app/model/article';
 import { ArticleService } from 'src/app/service/article.service';
 
@@ -12,16 +13,19 @@ export class ArticleComponent implements OnInit {
 
   public articleList: Article[] = []
 
-  constructor(private articleService: ArticleService,private sanitizer: DomSanitizer) { }
+  constructor(private articleService: ArticleService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getArticleList();
   }
 
   getArticleList() {
-    this.articleService.getArticleList().subscribe(res => {
+    iif(
+      () => this.activatedRoute.snapshot.url[0]?.path === 'admin',
+      this.articleService.getArticleList(this.activatedRoute.snapshot.url[0]?.path),
+      this.articleService.getArticleList()
+    ).subscribe(res => {
       this.articleList = res.data;
-      
-    })
+    });
   }
 }
