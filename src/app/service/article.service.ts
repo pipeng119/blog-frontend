@@ -13,11 +13,15 @@ export class ArticleService {
     @Inject('URL_CONFIG') private urlConfig: IUrlConfig,
     private http: HttpClient) { }
 
-  public getArticle(): Observable<Res<Article[]>> {
+  public getArticleList(): Observable<Res<Article[]>> {
     return this.http.get<Res<Article[]>>(`${this.urlConfig.url}/article`);
   }
 
   public createArticle(req: Article): Observable<Res<boolean>> {
     return this.http.post<Res<boolean>>(`${this.urlConfig.url}/article`, req);
+  }
+
+  public getArticle(id: string) {
+    return this.http.get<Res<Article>>(`${this.urlConfig.url}/article/${id}`);
   }
 }

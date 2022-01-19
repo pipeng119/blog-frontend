@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
   }
 
   getArticleList() {
-    this.articleService.getArticle().subscribe(res => {
+    this.articleService.getArticleList().subscribe(res => {
       this.articleList = res.data;
       
     })
