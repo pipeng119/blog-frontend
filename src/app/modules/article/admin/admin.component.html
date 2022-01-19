@@ -1,7 +1,17 @@
 <ul class="admin-wrapper p-x-20">
   <li *ngFor="let item of articleList">
-    <h1 nz-typography>
-      <a [routerLink]="[ 'detail', item.article_id ]">{{item.title}}</a>
+    <h1 nz-typography fxLayout="row" fxLayoutAlign="space-between center">
+      <a [routerLink]="[ '/article/detail', item.article_id ]">{{item.title}}</a>
+      <div class="btns">
+        <button nz-button nzType="default">
+          <i nz-icon nzType="search"></i>
+          编辑
+        </button>
+        <button nz-button nzDanger class="m-l-16" (click)="showConfirm(item.article_id!)">
+          <i nz-icon nzType="search"></i>
+          删除
+        </button>
+      </div>
     </h1>
     <p class="e2e-inner-html-bound" [innerHTML]="item.summary | htmlFilter"></p>
     <div class="meta">

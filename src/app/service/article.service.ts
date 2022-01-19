@@ -22,6 +22,10 @@ export class ArticleService {
     return this.http.post<Res<boolean>>(`${this.urlConfig.url}/article`, req);
   }
 
+  public deleteArticle(id: string): Observable<Res<boolean>> {
+    return this.http.delete<Res<boolean>>(`${this.urlConfig.url}/article/${id}`);
+  }
+
   public getArticle(id: string) {
     return this.http.get<Res<Article>>(`${this.urlConfig.url}/article/${id}`);
   }
