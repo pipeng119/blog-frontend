@@ -1,1 +1,19 @@
-<app-article></app-article>
+<ul class="admin-wrapper p-x-20">
+  <li *ngFor="let item of articleList">
+    <h1 nz-typography>
+      <a [routerLink]="[ 'detail', item.article_id ]">{{item.title}}</a>
+    </h1>
+    <p class="e2e-inner-html-bound" [innerHTML]="item.summary | htmlFilter"></p>
+    <div class="meta">
+      <a class="nikename">{{item.nikename}}</a>
+      <a>
+        <i class=""></i>
+        {{item.comment}}
+      </a>
+      <a>
+        <i class=""></i>
+        {{item.like}}
+      </a>
+    </div>
+  </li>
+</ul>

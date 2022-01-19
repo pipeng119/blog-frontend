@@ -10,6 +10,8 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+
 import { HtmlFilterPipe } from 'src/app/core/pipe/html-filter.pipe';
 
 const modules = [
@@ -23,7 +25,8 @@ const modules = [
   NzMessageModule,
   NzUploadModule,
   NzIconModule,
-  NzAvatarModule
+  NzAvatarModule,
+  NzTypographyModule
 ]
 
 

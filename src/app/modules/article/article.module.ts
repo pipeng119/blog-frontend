@@ -12,7 +12,7 @@ import { AdminComponent } from './admin/admin.component';
   declarations: [
     ArticleComponent,
     DetailComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     CommonModule,
