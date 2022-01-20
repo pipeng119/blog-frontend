@@ -1,5 +1,10 @@
 <div class="writer-wrapper">
   <input class="d-block m-b-16 b-0 f-s-24 f-w-500 title" placeholder="请输入文章标题..." [(ngModel)]="article.title" />
-  <editor [init]="editorConfig" [(ngModel)]="article.content"></editor>
+  <ckeditor [(ngModel)]="article.content" [config]="{uiColor: '#ffffff'}" [readonly]="false" (change)="onChange($event)"
+    (editorChange)="onEditorChange($event)" (ready)="onReady($event)" (focus)="onFocus($event)" (blur)="onBlur($event)"
+    (contentDom)="onContentDom($event)" (fileUploadRequest)="onFileUploadRequest($event)"
+    (fileUploadResponse)="onFileUploadResponse($event)" (paste)="onPaste($event)" (drop)="onDrop($event)"
+    debounce="500">
+  </ckeditor>
   <button nz-button nzType="primary" (click)="publishArticle()">发布文章</button>
 </div>

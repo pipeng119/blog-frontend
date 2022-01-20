@@ -5,8 +5,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { WriterRoutingModule } from './writer-routing.module';
 import { WriterComponent } from './writer.component';
-import { NzButtonModule } from 'ng-zorro-antd/button';
 import { SharedModule } from '../shared/shared.module';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     EditorModule,
     WriterRoutingModule,
-    SharedModule
+    SharedModule,
+    CKEditorModule
   ]
 })
 export class WriterModule { }
