@@ -6,5 +6,5 @@
     (fileUploadResponse)="onFileUploadResponse($event)" (paste)="onPaste($event)" (drop)="onDrop($event)"
     debounce="500">
   </ckeditor>
-  <button nz-button nzType="primary" (click)="publishArticle()">发布文章</button>
+  <button nz-button nzType="primary" (click)="commit()">{{articleId ? "编辑文章":"发布文章"}}</button>
 </div>

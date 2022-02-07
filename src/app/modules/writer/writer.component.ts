@@ -3,7 +3,7 @@ import { ArticleService } from './../../service/article.service';
 import { Component, OnInit } from '@angular/core';
 import tinymce from 'tinymce';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-writer',
@@ -17,9 +17,17 @@ export class WriterComponent implements OnInit {
     content: ''
   }
 
-  constructor(private articleService: ArticleService, private message: NzMessageService, private route: Router) { }
+  public get articleId() {
+    return this.route.snapshot.params.id || '';
+  }
+
+  private cacheArticle!: Article;
+
+  constructor(private articleService: ArticleService, private message: NzMessageService, private router: Router, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    if (this.articleId) this.getArticleById();
   }
 
   onChange(event: any) { }
@@ -33,15 +41,44 @@ export class WriterComponent implements OnInit {
   onPaste(event: any) { }
   onDrop(event: any) { }
 
-  publishArticle(): void {
+  commit() {
+    this.articleId ? this.update() : this.publish();
+  }
+
+  publish(): void {
     if (this.article.title && this.article.content) {
       this.articleService.createArticle(this.article).subscribe(res => {
         if (res.data) {
           this.message.success('创建文章成功');
-          this.route.navigateByUrl('/');
+          this.router.navigateByUrl('/');
         }
       })
+    } else {
+      this.message.error('请填写标题和内容!');
     }
+  }
+
+  update(): void {
+    if (this.isChange()) {
+      this.articleService.updateArticle(this.article)
+        .subscribe(res => {
+          this.message.success(res.message);
+          this.router.navigateByUrl('');
+        })
+    }else{
+      this.message.warning('文章标题或内容未发生改变!');
+    }
+  }
+
+  private getArticleById(): void {
+    this.articleService.getArticle(this.articleId).subscribe(res => {
+      this.article = res.data;
+      this.cacheArticle = JSON.parse(JSON.stringify(res.data));
+    })
+  }
+
+  private isChange(): boolean {
+    return this.cacheArticle.title !== this.article.title || this.cacheArticle.content !== this.article.content;
   }
 
 }

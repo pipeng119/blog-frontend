@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: WriterComponent
-  }
+  },
+  {
+    path: ':id',
+    component: WriterComponent
+  },
 ];
 
 @NgModule({
