@@ -1,7 +1,7 @@
 import { ArticleService } from './../../service/article.service';
 import { Article } from './../../model/article';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
@@ -32,11 +32,13 @@ export class HeaderComponent implements OnInit {
   constructor(
     public tokenService: TokenService,
     private router: Router,
+    private activeRoute: ActivatedRoute,
     public userService: UserService,
     public articleService: ArticleService,
     private msg: NzMessageService,
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     // this.getArticleList();

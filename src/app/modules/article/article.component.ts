@@ -12,16 +12,15 @@ export class ArticleComponent implements OnInit {
 
   public articleList: Article[] = []
 
-  constructor(private articleService: ArticleService,private sanitizer: DomSanitizer) { }
+  constructor(private articleService: ArticleService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.getArticleList();
   }
 
   getArticleList() {
-    this.articleService.getArticle().subscribe(res => {
+    this.articleService.getArticleList().subscribe(res => {
       this.articleList = res.data;
-      
     })
   }
 }
