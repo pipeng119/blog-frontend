@@ -1,4 +1,4 @@
-<ul class="admin-wrapper p-x-20">
+<ul class="content-wrapper p-x-20">
   <li *ngFor="let item of articleList">
     <h1 nz-typography fxLayout="row" fxLayoutAlign="space-between center">
       <a [routerLink]="[ '/article/detail', item.article_id ]">{{item.title}}</a>

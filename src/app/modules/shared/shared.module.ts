@@ -13,7 +13,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-
+import { NzListModule } from 'ng-zorro-antd/list';
 import { HtmlFilterPipe } from 'src/app/core/pipe/html-filter.pipe';
 
 const modules = [
@@ -30,7 +30,8 @@ const modules = [
   NzAvatarModule,
   NzTypographyModule,
   FlexLayoutModule,
-  NzModalModule
+  NzModalModule,
+  NzListModule
 ]
 
 

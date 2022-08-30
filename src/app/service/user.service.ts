@@ -29,4 +29,8 @@ export class UserService {
   public resigter(userInfo: User): Observable<Res<Pick<User, 'username' | 'password'>>> {
     return this.http.post<Res<Pick<User, 'username' | 'password'>>>(`${this.urlConfig.url}/user`, userInfo);
   }
+
+  public getAllUser(): Observable<Res<User[]>> {
+    return this.http.get<Res<User[]>>(`${this.urlConfig.url}/user/list`);
+  }
 }

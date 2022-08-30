@@ -17,7 +17,8 @@ const routes: Routes = [
       {
         path: 'article',
         loadChildren: () => import('./modules/article/article.module').then(m => m.ArticleModule)
-      }
+      },
+      { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule) }
     ]
   },
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
     path: 'writer',
     loadChildren: () => import('./modules/writer/writer.module').then(m => m.WriterModule)
   },
+
 
 ];
 

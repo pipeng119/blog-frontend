@@ -15,6 +15,7 @@ export class ArticleService {
 
   public getArticleList(param?: string): Observable<Res<Article[]>> {
     let url = param === 'admin' ? `${this.urlConfig.url}/article/all?key=${param}` : `${this.urlConfig.url}/article/all`;
+    console.log('url: ', url);
     return this.http.get<Res<Article[]>>(url);
   }
 
